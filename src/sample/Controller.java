@@ -50,7 +50,7 @@ public class Controller implements Initializable{
 
 
             System.out.println(dbc.AddrList);
-            ObservableList<Slim> hnopt = FXCollections.observableArrayList(dbc.AddrList);
+            ObservableList<String> hnopt = FXCollections.observableArrayList(dbc.AddrList);
             addressComboBox.getItems().setAll(hnopt);
         } catch (NullPointerException e) {};
     }

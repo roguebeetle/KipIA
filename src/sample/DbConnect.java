@@ -11,7 +11,7 @@ public class DbConnect {
 //Глобальные структуры и переменные
 
     public List<String> JeuList = new ArrayList<>();
-    public List<Slim> AddrList = new ArrayList<Slim>();
+    public List<String> AddrList = new ArrayList<String>();
     public List<String> SysList = new ArrayList<>();
 
 //
@@ -79,19 +79,19 @@ public class DbConnect {
             c.setAutoCommit(false);
             stmt = c.createStatement();
 
-            Slim slim = new Slim();
+//            Slim slim = new Slim();
             try (ResultSet rs = stmt.executeQuery( "SELECT * FROM objects WHERE Num_Jeu ='" + str + "' AND Sistema = '" + str2 + "' ")) {
 
                 while (rs.next()) {
                     String addr   = new String(String.valueOf(rs.getString("Adres_Doma")));
                     String ndom   = new String(String.valueOf(rs.getString("Num_Doma")));
                     String idom   = new String(String.valueOf(rs.getString("Num_korp")));
-                    slim.setAddr(addr);
-                    slim.setNdom(ndom);
-                    slim.setIdom(idom);
-                    AddrList.add(slim);
+//                    slim.setAddr(addr);
+//                    slim.setNdom(ndom);
+//                    slim.setIdom(idom);
+                    AddrList.add(addr + " " + ndom + " " + idom);
                 }
-                Set<Slim> hs = new HashSet<>();
+                Set<String> hs = new HashSet<>();
                 hs.addAll(AddrList);
                 AddrList.clear();
                 AddrList.addAll(hs);
